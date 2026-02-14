@@ -3,14 +3,18 @@ import mongoose from "mongoose";
 let userschema=new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
     email:{
         type:String,
-        required:true
+        required:true,
+         unique: true,
+        lowercase: true,
+        trim: true
     },
     mobile:{
-        type:Number,
+        type:String,
         required:true
     },
      DOB:{
@@ -18,7 +22,7 @@ let userschema=new mongoose.Schema({
         
     },
     addrass:{
-        type:String,
+        type:String
     
     },
      prooftype:{
@@ -30,8 +34,10 @@ let userschema=new mongoose.Schema({
         type:String,
         required:true
     },
-    usertype:{
-        type:String,
+    usertype: {
+      type: String,
+      default:"user"
+      
     },
     proofnum:{
         type:String,
@@ -47,7 +53,11 @@ let userschema=new mongoose.Schema({
     },
     profession:{
         type:String,
-    }
+    },
+    status: {
+     type: String,
+     default: "active"  
+     },
 
 })
 let user=mongoose.model("user",userschema)

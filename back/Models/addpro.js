@@ -70,8 +70,14 @@ const propertySchema = new mongoose.Schema(
   postedby:{
     type:String,
   },
+  status: {
+  type: String,
+  enum: ["available", "closed", "sold"],
+  default: "available",
+},
+  
   },
-  { timestamps: true }
+  { timestamps: true   }
 );
 
 export default mongoose.model("property", propertySchema);

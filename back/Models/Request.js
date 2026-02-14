@@ -2,27 +2,24 @@ import mongoose from "mongoose";
 
 const requestSchema = new mongoose.Schema(
   {
-    userId: {
+    userId: { 
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
-    },
-    agentId: {
+     ref: "user", required: true },
+    agentId: 
+    { type: mongoose.Schema.Types.ObjectId, 
+      ref: "user", required: true },
+    propertyId: { 
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
-    },
-    propertyId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "property",
-      required: true,
-    },
-    userName: String,
+       ref: "property", required: true },
     propertyTitle: String,
+    userName: String,
+    
     status: {
-      type: String,
-      default: "pending",
-    },
+  type: String,
+  enum: ["pending", "accepted", "rejected"],
+  default: "pending"
+}
+
   },
   { timestamps: true }
 );
